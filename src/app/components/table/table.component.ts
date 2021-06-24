@@ -22,7 +22,7 @@ export class TableComponent implements OnInit {
   totalColVal:TableModel[]=[];
   totalWorkStopsRow:number[]=[];
   totalWorkStopsCol:number[]=[];
-  
+
 
   constructor(private statuService:StatuService,
               private workService:WorkService,
@@ -31,8 +31,8 @@ export class TableComponent implements OnInit {
   ngOnInit(): void {
     this.getAllStatus();
     this.getAllWorks();
-    this.getAllResonStop();  
-    
+    this.getAllResonStop();
+
   }
 
   getAllStatus(){
@@ -70,13 +70,12 @@ export class TableComponent implements OnInit {
     let totalMin=0;
     for(let i =0;i<this.status.length;i++){
       for(let j=0;j<this.works.length;j++){
-        for(let k =0; k<this.tabledata.length;k++){ 
-          if(this.tabledata[k].rowId==j+1 && this.tabledata[k].columnId==i+1){ 
-            totalMin+=this.tabledata[k].boxValue;  
+        for(let k =0; k<this.tabledata.length;k++){
+          if(this.tabledata[k].rowId==j+1 && this.tabledata[k].columnId==i+1){
+            totalMin+=this.tabledata[k].boxValue;
           }
         }
-      }       
-      console.log(i)
+      }
       this.totalWorkStopsCol[i]=totalMin;
       totalMin=0;
     }
@@ -92,10 +91,10 @@ export class TableComponent implements OnInit {
     let totalMin=0;
     let t=0;
     for(let i =1;i<this.works.length+1;i++){
-      for(let j =1;j<this.status.length+1;j++){      
-        for(let k =0; k<this.tabledata.length;k++){ 
-          if(this.tabledata[k].rowId==i && this.tabledata[k].columnId==j){ 
-            totalMin+=this.tabledata[k].boxValue;  
+      for(let j =1;j<this.status.length+1;j++){
+        for(let k =0; k<this.tabledata.length;k++){
+          if(this.tabledata[k].rowId==i && this.tabledata[k].columnId==j){
+            totalMin+=this.tabledata[k].boxValue;
           }
         }
         this.totalColVal[t]={rowId:i,columnId:j,boxValue:totalMin}
@@ -110,7 +109,7 @@ export class TableComponent implements OnInit {
         }
         totalMin=0;
       }
-    
+
     }
     this.calculateTotalRowValue();
   }
