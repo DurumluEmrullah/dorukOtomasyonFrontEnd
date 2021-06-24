@@ -1,0 +1,25 @@
+<div class="container mt-5">
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">İş Emri</th>
+            <th scope="col" *ngFor="let statu of status">{{statu.name}}</th>
+            
+            <th scope="col">Toplam</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let work of works;let i=index;">
+            <th scope="row">{{work.name}}</th>
+            <td *ngFor="let statu of status;let j=index;">{{totalColVal[i*status.length+j].boxValue}}</td>
+            <td>{{totalWorkStopsRow[i]}}</td>
+          </tr>
+          <tr>
+              <th scope="row">Toplam</th>
+              <td *ngFor="let total of totalWorkStopsCol;let j=index;">{{total}}</td>
+              
+          </tr>
+       
+        </tbody>
+      </table>
+</div>
